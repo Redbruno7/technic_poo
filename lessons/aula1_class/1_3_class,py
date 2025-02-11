@@ -1,0 +1,63 @@
+# STUDENT: BRUNO C. RODGERS
+# DATE: 11/02/2025
+# º Create Class
+
+import os
+
+
+def cls_term():
+    os.system('cls')
+
+def title():
+    print('=' * 80)
+    print('POO - CLASS'.center(80))
+    print('=' * 80)
+    print()
+
+# Create class "class Class"
+class BankAccount:
+
+    # Constructor Method "def __init__(self, a, b, c, d, e)"
+    def __init__(
+        self, account_number, titular_name, balance, agency, account_type
+        ):
+
+        # Initiate attributes "self.atb = param"
+        self.account_number = account_number
+        self.titular_name = titular_name
+        self.balance = balance
+        self.agency = agency
+        self.account_type = account_type
+
+# Nav
+cls_term()
+title()
+
+# Software
+print('=' * 80)
+account_number = input('Enter account number: ').strip()
+print('-' * 80)
+titular_name = input('Enter titular name: ').strip()
+print('-' * 80)
+balance = input('Enter balance: ').strip()
+print('-' * 80)
+agency = input('Enter vehicle agency: ').strip()
+print('-' * 80)
+account_type = input('Enter account type: ').strip()
+print('=' * 80)
+print()
+
+# Create object from class "var = Class(value_1, value_2, value_3, value_4, value_5)"
+account = BankAccount(account_number, titular_name, balance, agency, account_type)
+
+# Output
+print('=' * 80)
+print('Bank Account Information:')
+print('-' * 80)
+print(f'Account Number: {account.account_number}')
+print(f'Titular Name: {account.titular_name}')
+print(f'Balance: {account.balance}')
+print(f'Agency: {account.agency}')
+print(f'Account Type: {account.account_type}')
+print('=' * 80)
+print()
