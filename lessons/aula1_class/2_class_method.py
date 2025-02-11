@@ -1,6 +1,6 @@
 # STUDENT: BRUNO C. RODGERS
 # DATE: 11/02/2025
-# º Create Class
+# º Create Class with methods
 
 import os
 
@@ -10,7 +10,7 @@ def cls_term():
 
 def title():
     print('=' * 80)
-    print('POO - CLASS'.center(80))
+    print('POO - CLASS - METHOD'.center(80))
     print('=' * 80)
     print()
 

@@ -17,7 +17,7 @@ def title():
 # Create class "class Class"
 class BankAccount:
 
-    # Constructor Method "def __init__(self, a, b, c, d, e)"
+    # Constructor Method "def __init__(self, a, b, c, d, e):"
     def __init__(
         self, account_number, titular_name, balance, agency, account_type
         ):
