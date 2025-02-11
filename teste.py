@@ -1,3 +1,0 @@
-import os
-
-teste1
