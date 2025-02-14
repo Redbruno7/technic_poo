@@ -2,7 +2,6 @@
 # DATE: 14/02/2025
 # - Receive 1 int number
 # - Print predecessor em successor
-# Faça um programa que receba um número inteiro e mostre o sucessor e antecessor
 
 import os
 
@@ -42,7 +41,7 @@ class IntegerNumber:
                 print()
 
     def get_pred_suc(self):
-        """processual method - return predecessor and successor"""
+        """Processual method - return predecessor and successor"""
         return self.a - 1, self.a + 1
 
 
