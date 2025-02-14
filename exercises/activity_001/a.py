@@ -13,33 +13,44 @@ def cls_term():
 
 def title():
     print('=' * 80)
-    print('POO - SUM AND MULTIPLICATION')
+    print('POO - SUM AND MULTIPLICATION'.center(80))
     print('=' * 80)
     print()
 
 
 class Operation:
     def __init__(self, a, b, c):
+        """
+        Initialize class with 3 numbers
+        param_1: 1º number
+        param_2: 2º number
+        param_3: 3º number
+        """
         self.a = a
         self.b = b
         self.c = c
 
-    def calculate_sum(self, a, b, c):
-        self.sum = self.a + self.b + self.c
-        return self.sum
+    def calculate_sum(self):
+        """Return sum 3 values"""
+        return f'{self.a} + {self.b} + {self.c} = {self.a + self.b + self.c}'
 
-    def calculate_mult(self, a, b, c):
-        self.multiply = self.a * self.b * self.c
-        return self.multiply
+    def calculate_mult(self):
+        """Return multiplication 3 values"""
+        return f'{self.a} * {self.b} * {self.c} = {self.a * self.b * self.c}'
 
     def get_number(self):
+        """Iterate method - get 3 values"""
         while True:
             try:
                 print('=' * 80)
                 self.a = int(input('Enter 1º value: '))
                 print('-' * 80)
                 self.b = int(input('Enter 2º value: '))
-                
+                print('-' * 80)
+                self.c = int(input('Enter 3º value: '))
+                print('=' * 80)
+                print()
+                break
 
             except:
                 print('-' * 80)
@@ -51,9 +62,18 @@ def main():
     cls_term()
     title()
 
-    numbers = Operation.get_number()
+    operations = Operation(0, 0, 0)
+    operations.get_number()
 
-    print(f'{numbers}')
+    print('=' * 80)
+    print('Operations result:')
+    print('=' * 80)
+    print(f'Sum: {operations.calculate_sum()}')
+    print('-' * 80)
+    print(f'Multiplication: {operations.calculate_mult()}')
+    print('=' * 80)
+    print()
+
 
 if __name__ == '__main__':
     main()
