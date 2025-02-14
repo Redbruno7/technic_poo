@@ -10,14 +10,16 @@ import datetime
 def cls_term():
     os.system('cls')
 
+
 def title():
     print('=' * 80)
     print('POO - CALCULATE AGE')
     print('=' * 80)
     print()
 
+
 class Person:
-    def __init__(self, year_birth = 0):
+    def __init__(self, year_birth=0):
         """
         Initialize 1 attribute
         param_1 : year birth
@@ -64,6 +66,7 @@ def main():
     print(f'Age: {person_1.calculate_age()} years.')
     print('=' * 80)
     print()
+
 
 if __name__ == '__main__':
     main()
