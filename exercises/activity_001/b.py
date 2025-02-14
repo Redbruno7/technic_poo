@@ -25,6 +25,7 @@ class Person:
         self.year_birth = year_birth
 
     def get_age(self):
+        """Iterate method - get age"""
         while True:
             try:
                 print('=' * 80)
@@ -47,6 +48,7 @@ class Person:
                 print()
 
     def calculate_age(self):
+        """Return age calculation"""
         self.current_year = datetime.datetime.now().year
         return self.current_year - self.year_birth
 
