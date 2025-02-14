@@ -13,7 +13,7 @@ def cls_term():
 
 def title():
     print('=' * 80)
-    print('POO - CALCULATE AGE')
+    print('POO - CALCULATE AGE'.center(80))
     print('=' * 80)
     print()
 
