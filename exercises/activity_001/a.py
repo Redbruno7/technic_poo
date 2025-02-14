@@ -55,7 +55,8 @@ class Operation:
             except:
                 print('-' * 80)
                 print('Invalid value. Try again.')
-                print('-' * 80)
+                print('=' * 80)
+                print()
 
 
 def main():
