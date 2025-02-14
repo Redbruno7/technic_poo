@@ -11,7 +11,7 @@ def cls_term():
 
 def title():
     print('=' * 80)
-    print('')
+    print('POO - CALCULATE MEDIA')
     print('=' * 80)
     print()
 
