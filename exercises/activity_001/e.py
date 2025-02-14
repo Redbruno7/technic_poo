@@ -18,7 +18,7 @@ def title():
     print()
 
 
-class Number:
+class IntegerNumber:
     def __init__(self, a=0):
         """
         Initialize 1 int number
@@ -50,7 +50,7 @@ def main():
     cls_term()
     title()
 
-    number = Number()
+    number = IntegerNumber()
     number.get_number()
     pred, suc = number.get_pred_suc()
 
