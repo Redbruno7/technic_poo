@@ -25,14 +25,14 @@ while True:
     continue_register = input('Deseja cadastrar outro aluno? (s/n): ').strip().lower()
     print('=' * 80)
     print()
-    
+
     if continue_register == 's':
         system.register_student()
 
     elif continue_register == 'n':
         cls_terminal()
         break
-        
+
     else:
         print('=' * 80)
         print('Resposta inválida. Tente novamente.')
