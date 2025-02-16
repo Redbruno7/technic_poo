@@ -1,6 +1,6 @@
 # STUDENT: BRUNO C. RODGERS
 # DATE: 14/02/2025
-# 
+# Faça um programa que receba um valor em reais, depois calcule quantos dólares daria para comprar com esse valor.
 
 import os
 

@@ -1,6 +1,6 @@
 # STUDENT: BRUNO C. RODGERS
 # DATE: 14/02/2025
-# 
+# Faça um programa com entrada de dados para calcular o perímetro de um retângulo
 
 import os
 

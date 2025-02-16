@@ -1,7 +1,7 @@
 # STUDENT: BRUNO C. RODGERS
 # DATE: 14/02/2025
-# - Convert m to cm;
-# - Convert cm to mm;
+# - Receive 1 float number;
+# - Calculate double and triple.
 
 import os
 
@@ -12,61 +12,60 @@ def cls_term():
 
 def title():
     print('=' * 80)
-    print('POO - MEASUREMENT CONVERSION'.center(80))
+    print('POO - CALCULATE DOUBLE AND TRIPLE'.center(80))
     print('=' * 80)
     print()
 
 
-class MeasurementConversion:
-    def __init__(self, a=0):
+class Operations:
+    def __init__(self, a = 0):
         """
-        Initialize 1 measurement
-        param_1 = m value
+        Initialize 1  float number
+        param_1: float number
         """
         self.a = a
 
-    def get_m(self):
-        """Iterate method - get m value"""
+    def get_number(self):
+        """
+        Iterate method - get float number
+        """
         while True:
             try:
                 print('=' * 80)
-                self.a = float(input('Enter in meters: '))
-                if self.a > 0:
-                    print('=' * 80)
-                    print()
-                    break
-                else:
-                    print('-' * 80)
-                    print('Invalid value. Try again.')
-                    print('=' * 80)
-                    print()
+                self.a = float(input('Enter number: '))
+                print('=' * 80)
+                print()
+                break
             except ValueError:
                 print('-' * 80)
-                print('Invalid value. Try again.')
+                print('Invalid number. Try again.')
                 print('=' * 80)
                 print()
 
-    def convert(self):
+    def calculate_double(self):
         """
-        Processual method
-        1: return conversion m to cm
-        2: return conversion cm to mm
+        Calculate method - a * 2
         """
-        return self.a * 100, self.a * 1000
+        return self.a * 2
+
+    def calculate_triple(self):
+        """
+        Calculate melhor - a * 3
+        """
+        return self.a * 3
 
 
 def main():
     cls_term()
     title()
 
-    number = MeasurementConversion()
-    number.get_m()
-    cm, mm = number.convert()
+    operations = Operations()
+    operations.get_number()
 
     print('=' * 80)
-    print(f'M to cm: {cm}')
+    print(f'Result double: {operations.calculate_double()}')
     print('-' * 80)
-    print(f'Cm to mm: {mm}')
+    print(f'Result triple: {operations.calculate_triple()}')
     print('=' * 80)
     print()
 

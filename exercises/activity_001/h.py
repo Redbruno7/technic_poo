@@ -1,6 +1,6 @@
 # STUDENT: BRUNO C. RODGERS
 # DATE: 14/02/2025
-# 
+# Faça um programa que receba um número inteiro, depois imprima sua tabuada de multiplicação.
 
 import os
 
