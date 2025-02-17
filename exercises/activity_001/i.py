@@ -17,7 +17,7 @@ def title():
     print()
 
 
-class Cambio:
+class Exchange:
     def __init__(self, real=0):
         """
         Initialize 1 attribute
@@ -64,11 +64,11 @@ def main():
     cls_term()
     title()
 
-    cambio = Cambio()
-    cambio.get_value()
+    exchange = Exchange()
+    exchange.get_value()
 
     print('=' * 80)
-    print(f'You can buy $ {cambio.convert_value():.2f} Dolars.')
+    print(f'You can buy $ {exchange.convert_value():.2f} Dolars.')
     print('=' * 80)
     print()
 
