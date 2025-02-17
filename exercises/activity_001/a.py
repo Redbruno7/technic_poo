@@ -20,12 +20,13 @@ def title():
 
 class Operation:
     def __init__(self, a, b, c):
-        """
-        Initialize class with 3 numbers
-        param_1: 1º number
-        param_2: 2º number
-        param_3: 3º number
-        """
+        """Initialize 3 attributes
+
+        Args:
+            a (int): 1º value
+            b (int): 2º value
+            c (int): 3º value
+        """        
         self.a = a
         self.b = b
         self.c = c

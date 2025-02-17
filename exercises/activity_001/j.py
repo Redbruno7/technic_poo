@@ -19,11 +19,12 @@ def title():
 
 class RectanglePerimeter():
     def __init__(self, base=0, height=0):
-        """
-        Initialize 2 float values
-        param_1: base
-        param_2: height
-        """
+        """Initialize 2 float values
+
+        Args:
+            base (float): _description_. Defaults to 0.
+            height (float): _description_. Defaults to 0.
+        """        
         self.base = base
         self.height = height
 
