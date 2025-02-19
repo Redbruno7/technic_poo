@@ -25,10 +25,8 @@
 # - Truck:
 # + Load capacity.
 
-import os
 from packs.print import cls_term, title
 from packs.iterate import menu
-from packs.classes import Vehicle, Car, Motorcycle, Truck
 
 
 def main():

@@ -53,64 +53,6 @@ class Vehicle:
             raise ValueError('Color cannot be empty.')
         self._color = value.strip()
 
-    def get_data(self):
-        """Iterate Method - Get vehicle commom data
-        """
-        print('=' * 80)
-        while True:
-            try:
-                self._brand = input('Enter brand: ')
-                print('=' * 80)
-                print()
-                break
-            except ValueError as empty:
-                print('-' * 80)
-                print(empty)
-                print('-' * 80)
-
-        print('=' * 80)
-        while True:
-            try:
-                self._model = input('Enter model: ')
-                print('=' * 80)
-                print()
-                break
-            except ValueError as empty:
-                print('-' * 80)
-                print(empty)
-                print('-' * 80)
-
-        print('=' * 80)
-        while True:
-            try:
-                self._year = int(
-                    input('Enter year manufacture (Format: YYYY): '))
-                print('=' * 80)
-                print()
-                break
-            except ValueError as empty:
-                print('-' * 80)
-                print(empty)
-                print('-' * 80)
-
-        print('=' * 80)
-        while True:
-            try:
-                self._color = input('Enter color: ')
-                print('=' * 80)
-                print()
-                break
-            except ValueError as empty:
-                print('-' * 80)
-                print(empty)
-                print('-' * 80)
-
-    def show_data(self):
-        print(f'Brand: {self.brand}')
-        print(f'Model: {self.model}')
-        print(f'Year: {self.year}')
-        print(f'Color: {self.color}')
-
 
 class Car(Vehicle):
     def __init__(self, brand='', model='', year=0, color='', fuel_type=''):
@@ -126,22 +68,6 @@ class Car(Vehicle):
         if not value.strip():
             raise ValueError('Fuel type cannot be empty.')
         self._fuel_type = value.strip()
-
-    def get_data(self):
-        super().get_data()
-
-        print('=' * 80)
-        while True:
-            try:
-                self._fuel_type = input('Enter fuel type: ')
-                print('=' * 80)
-                print()
-                break
-            except ValueError as empty:
-                print('-' * 80)
-                print(empty)
-                print('=' * 80)
-                print()
 
     def show_data(self):
         print('=' * 80)
@@ -167,8 +93,6 @@ class Motorcycle(Vehicle):
         self._motorcycle_type = value.strip()
 
     def get_data(self):
-        super().get_data()
-
         print('=' * 80)
         while True:
             try:
@@ -176,15 +100,15 @@ class Motorcycle(Vehicle):
                 print('=' * 80)
                 print()
                 break
-            except ValueError as empty:
+            except ValueError as e:
                 print('-' * 80)
-                print(empty)
+                print(e)
                 print('-' * 80)
 
     def show_data(self):
         print('=' * 80)
         super().show_data()
-        print(f'Motorcycle type: {self.motorcycle_type}')
+        print(f'Motorcycle type: {self._motorcycle_type}')
         print('=' * 80)
         print()
 
@@ -200,8 +124,8 @@ class Truck(Vehicle):
 
     @load_capacity.setter
     def load_capacity(self, value):
-        if not isinstance(value, float) or value <= 0:
-            raise ValueError('Loa capacity must be a positive value.')
+        if not isinstance(value, (int, float)) or value <= 0:
+            raise ValueError('Load capacity must be a positive value.')
         self._load_capacity = value
 
     def get_data(self):
@@ -214,14 +138,14 @@ class Truck(Vehicle):
                 print('=' * 80)
                 print()
                 break
-            except ValueError as empty:
+            except ValueError as e:
                 print('-' * 80)
-                print(empty)
+                print(e)
                 print('-' * 80)
 
     def show_data(self):
         print('=' * 80)
         super().show_data()
-        print(f'Load capacity: {self.load_capacity:.2f} kg')
+        print(f'Load capacity: {self._load_capacity:.2f} kg')
         print('=' * 80)
         print()
