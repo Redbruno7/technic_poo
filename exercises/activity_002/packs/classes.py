@@ -53,6 +53,32 @@ class Vehicle:
             raise ValueError('Color cannot be empty.')
         self._color = value.strip()
 
+    def get_data(self):
+        self.brand = input('Enter brand: ')
+        print('-' * 80)
+        self.model = input('Enter model: ')
+        print('-' * 80)
+        self.year = int(input('Enter year manufacture (Format: YYYY): '))
+        print('-' * 80)
+        self.color = input('Enter color: ')
+        print('-' * 80)
+
+    def show_data(self):
+        print('=' * 80)
+        print(f'Brand: {self.brand}')
+        print(f'Model: {self.model}')
+        print(f'Year: {self.year}')
+        print(f'Color: {self.color}')
+
+    def vehicle_dict(self):
+        return {
+            'brand': self.brand,
+            'model': self.model,
+            'year': self.year,
+            'color': self.color
+        }
+        
+
 
 class Car(Vehicle):
     def __init__(self, brand='', model='', year=0, color='', fuel_type=''):
@@ -69,12 +95,22 @@ class Car(Vehicle):
             raise ValueError('Fuel type cannot be empty.')
         self._fuel_type = value.strip()
 
-    def show_data(self):
+    def get_data(self):
+        super().get_data()
+        self.fuel_type = input('Enter fuel type: ')
         print('=' * 80)
+        print()
+
+    def show_data(self):
         super().show_data()
         print(f'Fuel type: {self.fuel_type}')
         print('=' * 80)
         print()
+
+    def car_dict(self):
+        car_dict = super().vehicle_dict()
+        car_dict['fuel_type'] = self.fuel_type
+        return car_dict
 
 
 class Motorcycle(Vehicle):

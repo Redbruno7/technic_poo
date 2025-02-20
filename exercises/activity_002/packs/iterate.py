@@ -62,27 +62,27 @@ def especify_menu():
             option = int(option)
 
             if option == 1:
-                print('=' * 80)
-                print()
-                print('=' * 80)
-                register_car()
-                print()
-                print('=' * 80)
                 while True:
+                    cls_term()
+                    title()
+                    print('=' * 80)
+                    car_data = register_car()
+                    print('=' * 80)
+                    print('Car registered successfully.')
+                    print(car_data)
+                    print('=' * 80)
+                    print()
+
+                    print('=' * 80)
                     try_again = input(
                         'Continue register (y/n): '
                     ).strip().lower()
 
                     if try_again == 'n':
-                        return menu()
-                    elif try_again == 'y':
-                        cls_term()
-                        title()
-                        return especify_menu()
-                    else:
+                        return
+                    elif try_again != 'y':
                         print('-' * 80)
                         input('Invalid option. Press enter to try again: ')
-                        print('-' * 80)
 
             elif option == 2:
                 pass
@@ -102,92 +102,13 @@ def especify_menu():
 
 
 def register_car():
-    car_data = get_car_data()
-    car = Car(car_data['brand'], car_data['model'], car_data['year'], car_data['color'], car_data['fuel_type'])
-
-    print('=' * 80)
-    print('Car registered successfully.')
-
-    show_car_data(car_data)
-    return car
-
-
-def get_car_data():
-    """Iterate Method - Get vehicle commom data
-    """
     car = Car()
     while True:
         try:
-            brand = input('Enter brand: ')
-            car.brand = brand
-            break
-
-        except ValueError as e:
-            print('-' * 80)
-            print(e)
-            print('-' * 80)
-
-    print('-' * 80)
-    while True:
-        try:
-            model = input('Enter model: ')
-            car.model = model
+            car.get_data()
             break
         except ValueError as e:
             print('-' * 80)
             print(e)
             print('-' * 80)
-
-    print('-' * 80)
-    while True:
-        try:
-            year = int(
-                input('Enter year manufacture (Format: YYYY): '))
-            car.year = year
-            break
-        except ValueError as e:
-            print('-' * 80)
-            print(e)
-            print('-' * 80)
-
-    print('-' * 80)
-    while True:
-        try:
-            color = input('Enter color: ')
-            car.color = color
-            break
-        except ValueError as e:
-            print('-' * 80)
-            print(e)
-            print('-' * 80)
-
-    print('-' * 80)
-    while True:
-        try:
-            fuel_type = input('Enter fuel type: ')
-            car.fuel_type = fuel_type
-            print('=' * 80)
-            print()
-            break
-        except ValueError as e:
-            print('-' * 80)
-            print(e)
-            print('-' * 80)
-
-    return {
-        'brand': brand,
-        'model': model,
-        'year': year,
-        'color': color,
-        'fuel_type': fuel_type
-    }
-
-
-def show_car_data(car_dict):
-    print('=' * 80)
-    print(f'Brand: {car_dict["brand"]}')
-    print(f'Model: {car_dict["model"]}')
-    print(f'Year: {car_dict["year"]}')
-    print(f'Color: {car_dict["color"]}')
-    print(f'Fuel Type: {car_dict["fuel_type"]}')
-    print('=' * 80)
+    return car.car_dict()
