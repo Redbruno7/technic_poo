@@ -22,6 +22,7 @@ def menu():
             option = int(option)
 
             if option in [1, 2, 3, 4]:
+                cls_term()
                 print('=' * 80)
                 print()
                 especify_menu()
@@ -36,12 +37,12 @@ def menu():
             else:
                 print('-' * 80)
                 input('Invalid option. Press enter to try again: ')
-                print('-' * 80)
+                cls_term()
 
         else:
             print('-' * 80)
             input('Invalid option. Press enter to try again: ')
-            print('-' * 80)
+            cls_term()
 
 
 def especify_menu():
@@ -63,9 +64,9 @@ def especify_menu():
             if option == 1:
                 print('=' * 80)
                 print()
+                print('=' * 80)
                 register_car()
-                show_car_data()
-
+                print()
                 print('=' * 80)
                 while True:
                     try_again = input(
@@ -73,11 +74,11 @@ def especify_menu():
                     ).strip().lower()
 
                     if try_again == 'n':
-                        return
+                        return menu()
                     elif try_again == 'y':
                         cls_term()
                         title()
-                        register_car()
+                        return especify_menu()
                     else:
                         print('-' * 80)
                         input('Invalid option. Press enter to try again: ')
@@ -92,12 +93,12 @@ def especify_menu():
             else:
                 print('-' * 80)
                 input('Invalid option. Press enter to try again: ')
-                print('-' * 80)
+                cls_term()
 
         else:
             print('-' * 80)
             input('Invalid option. Press enter to try again: ')
-            print('-' * 80)
+            cls_term()
 
 
 def register_car():
@@ -106,6 +107,8 @@ def register_car():
 
     print('=' * 80)
     print('Car registered successfully.')
+
+    show_car_data(car_data)
     return car
 
 
@@ -113,7 +116,6 @@ def get_car_data():
     """Iterate Method - Get vehicle commom data
     """
     car = Car()
-    print('=' * 80)
     while True:
         try:
             brand = input('Enter brand: ')
@@ -181,10 +183,11 @@ def get_car_data():
     }
 
 
-def show_car_data():
-    car_dict = get_car_data()
+def show_car_data(car_dict):
+    print('=' * 80)
     print(f'Brand: {car_dict["brand"]}')
     print(f'Model: {car_dict["model"]}')
     print(f'Year: {car_dict["year"]}')
     print(f'Color: {car_dict["color"]}')
-    print(f'Fuel type: ')
+    print(f'Fuel Type: {car_dict["fuel_type"]}')
+    print('=' * 80)
