@@ -21,11 +21,17 @@ def menu():
         if option.isdigit():
             option = int(option)
 
-            if option in [1, 2, 3, 4]:
+            if option == 1:
                 cls_term()
-                print('=' * 80)
-                print()
-                especify_menu()
+                title()
+                register_menu()
+            elif option == 2:
+                cls_term()
+                title()
+            elif option == 3:
+                pass
+            elif option == 4:
+                pass
             elif option == 5:
                 print('=' * 80)
                 print()
@@ -46,16 +52,19 @@ def menu():
 
 
 def especify_menu():
-    while True:
-        print('=' * 80)
-        print('Especify Menu:'.center(80))
-        print('=' * 80)
-        print('1. Car.')
-        print('2. Motorcycle.')
-        print('3. Truck.')
-        print('4. Back.')
-        print('-' * 80)
+    print('=' * 80)
+    print('Especify Menu:'.center(80))
+    print('=' * 80)
+    print('1. Car.')
+    print('2. Motorcycle.')
+    print('3. Truck.')
+    print('4. Back.')
+    print('-' * 80)
 
+
+def register_menu():
+    while True:
+        especify_menu()
         option = input('Choose option (1-4): ').strip()
 
         if option.isdigit():
@@ -66,30 +75,60 @@ def especify_menu():
                     cls_term()
                     title()
                     print('=' * 80)
+
                     car_data = register_car()
+
                     print('=' * 80)
                     print('Car registered successfully.')
-                    print(car_data)
+                    print('-' * 80)
+
+                    for key, value in car_data.items():
+                        print(f'{key}: {value}')
+
                     print('=' * 80)
                     print()
-
-                    print('=' * 80)
-                    try_again = input(
-                        'Continue register (y/n): '
-                    ).strip().lower()
-
-                    if try_again == 'n':
-                        return
-                    elif try_again != 'y':
-                        print('-' * 80)
-                        input('Invalid option. Press enter to try again: ')
+                    register_again()
 
             elif option == 2:
-                pass
+                while True:
+                    cls_term()
+                    title()
+                    print('=' * 80)
+
+                    motorcycle_data = register_motorcycle()
+
+                    print('=' * 80)
+                    print('Motorcycle registered successfully.')
+                    print('-' * 80)
+
+                    for key, value in motorcycle_data.items():
+                        print(f'{key}: {value}')
+
+                    print('=' * 80)
+                    print()
+                    register_again()
+
             elif option == 3:
-                pass
+                while True:
+                    cls_term()
+                    title()
+                    print('=' * 80)
+
+                    truck_data = register_truck()
+
+                    print('=' * 80)
+                    print('Truck registered successfully.')
+                    print('-' * 80)
+
+                    for key, value in truck_data.items():
+                        print(f'{key}: {value}')
+                    print('=' * 80)
+                    print()
+                    register_again()
+
             elif option == 4:
                 return
+
             else:
                 print('-' * 80)
                 input('Invalid option. Press enter to try again: ')
@@ -112,3 +151,48 @@ def register_car():
             print(e)
             print('-' * 80)
     return car.car_dict()
+
+
+def register_motorcycle():
+    motorcycle = Motorcycle()
+    while True:
+        try:
+            motorcycle.get_data()
+            break
+        except ValueError as e:
+            print('-' * 80)
+            print(e)
+            print('-' * 80)
+    return motorcycle.motorcycle_dict()
+
+
+def register_truck():
+    truck = Truck()
+    while True:
+        try:
+            truck.get_data()
+            break
+        except ValueError as e:
+            print('-' * 80)
+            print(e)
+            print('-' * 80)
+    return truck.truck_dict()
+
+
+def register_again():
+    print('=' * 80)
+    while True:
+        register_again = input(
+            'Continue register (y/n): '
+        ).strip().lower()
+
+        if register_again == 'n':
+            return menu()
+        elif register_again == 'y':
+            cls_term()
+            title()
+            return register_menu()
+        else:
+            print('-' * 80)
+            input('Invalid option. Press enter to try again: ')
+            print('-' * 80)

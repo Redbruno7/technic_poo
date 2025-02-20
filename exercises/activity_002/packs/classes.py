@@ -54,14 +54,45 @@ class Vehicle:
         self._color = value.strip()
 
     def get_data(self):
-        self.brand = input('Enter brand: ')
-        print('-' * 80)
-        self.model = input('Enter model: ')
-        print('-' * 80)
-        self.year = int(input('Enter year manufacture (Format: YYYY): '))
-        print('-' * 80)
-        self.color = input('Enter color: ')
-        print('-' * 80)
+        while True:
+            try:
+                self.brand = input('Enter brand: ')
+                print('-' * 80)
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+
+        while True:
+            try:
+                self.model = input('Enter model: ')
+                print('-' * 80)
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+
+        while True:
+            try:
+                self.year = int(input('Enter year manufacture (Format: YYYY): '))
+                print('-' * 80)
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+
+        while True:
+            try:
+                self.color = input('Enter color: ')
+                print('-' * 80)
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
 
     def show_data(self):
         print('=' * 80)
@@ -77,7 +108,6 @@ class Vehicle:
             'year': self.year,
             'color': self.color
         }
-        
 
 
 class Car(Vehicle):
@@ -97,9 +127,16 @@ class Car(Vehicle):
 
     def get_data(self):
         super().get_data()
-        self.fuel_type = input('Enter fuel type: ')
-        print('=' * 80)
-        print()
+        while True:
+            try:
+                self.fuel_type = input('Enter fuel type: ')
+                print('=' * 80)
+                print()
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
 
     def show_data(self):
         super().show_data()
@@ -129,7 +166,7 @@ class Motorcycle(Vehicle):
         self._motorcycle_type = value.strip()
 
     def get_data(self):
-        print('=' * 80)
+        super().get_data()
         while True:
             try:
                 self._motorcycle_type = input('Enter motorcycle type: ')
@@ -142,11 +179,15 @@ class Motorcycle(Vehicle):
                 print('-' * 80)
 
     def show_data(self):
-        print('=' * 80)
         super().show_data()
         print(f'Motorcycle type: {self._motorcycle_type}')
         print('=' * 80)
         print()
+
+    def motorcycle_dict(self):
+        motorcycle_dict = super().vehicle_dict()
+        motorcycle_dict['motorcycle_type'] = self.motorcycle_type
+        return motorcycle_dict
 
 
 class Truck(Vehicle):
@@ -166,8 +207,6 @@ class Truck(Vehicle):
 
     def get_data(self):
         super().get_data()
-
-        print('=' * 80)
         while True:
             try:
                 self._load_capacity = float(input('Enter load capacity: '))
@@ -180,8 +219,12 @@ class Truck(Vehicle):
                 print('-' * 80)
 
     def show_data(self):
-        print('=' * 80)
         super().show_data()
         print(f'Load capacity: {self._load_capacity:.2f} kg')
         print('=' * 80)
         print()
+
+    def truck_dict(self):
+        truck_dict = super().vehicle_dict()
+        truck_dict['load_capacity'] = self.load_capacity
+        return truck_dict
