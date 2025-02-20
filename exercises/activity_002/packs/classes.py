@@ -1,17 +1,34 @@
+registered_codes = set()
+
 class Vehicle:
-    def __init__(self, brand='', model='', year=0, color=''):
+    def __init__(self, code=0, brand='', model='', year=0, color=''):
         """Initialize commom attributes
 
         Args:
+            register_code (int): Vehicle register code
             brand (string): Vehicle brand
             model (string): Vehicle model
             year (int): Vehicle year of manufacture
             color (string): Vehicle color
         """
+        self._code = code
         self._brand = brand
         self._model = model
         self._year = year
         self._color = color
+
+    @property
+    def code(self):
+        return self._code
+
+    @code.setter
+    def code(self, value):
+        if not isinstance(value, int) or value <= 0:
+            raise ValueError('Register code must is a positive number.')
+        if value in registered_codes:
+            raise ValueError('This code is already in use.')
+        self._code = value
+        registered_codes.add(value)
 
     @property
     def brand(self):
@@ -56,6 +73,16 @@ class Vehicle:
     def get_data(self):
         while True:
             try:
+                self.code = int(input('Enter code: '))
+                print('-' * 80)
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+
+        while True:
+            try:
                 self.brand = input('Enter brand: ')
                 print('-' * 80)
                 break
@@ -94,8 +121,9 @@ class Vehicle:
                 print(e)
                 print('-' * 80)
 
-    def show_data(self):
-        print('=' * 80)
+    def vehicle_data(self):
+        print('-' * 80)
+        print(f'Code: {self.code}')
         print(f'Brand: {self.brand}')
         print(f'Model: {self.model}')
         print(f'Year: {self.year}')
@@ -103,6 +131,7 @@ class Vehicle:
 
     def vehicle_dict(self):
         return {
+            'code': self.code,
             'brand': self.brand,
             'model': self.model,
             'year': self.year,
@@ -111,8 +140,8 @@ class Vehicle:
 
 
 class Car(Vehicle):
-    def __init__(self, brand='', model='', year=0, color='', fuel_type=''):
-        super().__init__(brand, model, year, color)
+    def __init__(self, code=0, brand='', model='', year=0, color='', fuel_type=''):
+        super().__init__(code, brand, model, year, color)
         self._fuel_type = fuel_type
 
     @property
@@ -138,8 +167,8 @@ class Car(Vehicle):
                 print(e)
                 print('-' * 80)
 
-    def show_data(self):
-        super().show_data()
+    def car_data(self):
+        super().vehicle_data()
         print(f'Fuel type: {self.fuel_type}')
         print('=' * 80)
         print()
@@ -151,8 +180,8 @@ class Car(Vehicle):
 
 
 class Motorcycle(Vehicle):
-    def __init__(self, brand='', model='', year=0, color='', motorcycle_type=''):
-        super().__init__(brand, model, year, color)
+    def __init__(self, code=0, brand='', model='', year=0, color='', motorcycle_type=''):
+        super().__init__(code, brand, model, year, color)
         self._motorcycle_type = motorcycle_type
 
     @property
@@ -178,8 +207,8 @@ class Motorcycle(Vehicle):
                 print(e)
                 print('-' * 80)
 
-    def show_data(self):
-        super().show_data()
+    def motorcycle_data(self):
+        super().vehicle_data()
         print(f'Motorcycle type: {self._motorcycle_type}')
         print('=' * 80)
         print()
@@ -191,8 +220,8 @@ class Motorcycle(Vehicle):
 
 
 class Truck(Vehicle):
-    def __init__(self, brand='', model='', year=0, color='', load_capacity=0):
-        super().__init__(brand, model, year, color)
+    def __init__(self, code=0, brand='', model='', year=0, color='', load_capacity=0):
+        super().__init__(code, brand, model, year, color)
         self._load_capacity = load_capacity
 
     @property
@@ -218,8 +247,8 @@ class Truck(Vehicle):
                 print(e)
                 print('-' * 80)
 
-    def show_data(self):
-        super().show_data()
+    def truck_data(self):
+        super().vehicle_data()
         print(f'Load capacity: {self._load_capacity:.2f} kg')
         print('=' * 80)
         print()

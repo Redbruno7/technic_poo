@@ -25,14 +25,14 @@
 # - Truck:
 # + Load capacity.
 
-from packs.print import cls_term, title
-from packs.iterate import menu
+from packs.menu import cls_term, title
+from packs.iterate import main_menu
 
 
 def main():
     cls_term()
     title()
-    menu()
+    main_menu()
 
 
 if __name__ == '__main__':

@@ -2,7 +2,7 @@ import os
 from packs.classes import Vehicle, Car, Motorcycle, Truck
 
 
-from packs.print import cls_term, title
+from exercises.activity_002.packs.menu import cls_term, title
 from packs.classes import Vehicle, Car, Motorcycle, Truck
 
 
