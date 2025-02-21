@@ -68,14 +68,17 @@ def list_registered_vehicles():
         if isinstance(vehicle, Car):
             print('=' * 80)
             print('Registered Cars:')
+            print('-' * 80)
             vehicle.car_data()
         elif isinstance(vehicle, Motorcycle):
             print('=' * 80)
             print('Registered Motorcycles:')
+            print('-' * 80)
             vehicle.motorcycle_data()
         elif isinstance(vehicle, Truck):
             print('=' * 80)
             print('Registered Trucks:')
+            print('-' * 80)
             vehicle.truck_data()
         else:
             vehicle.vehicle_data()
@@ -301,7 +304,7 @@ def modify_car():
             print(f'You selected: {car.vehicle_data()}')
             car.modify_car() # Chamar método - modificar dados carro
             registered_vehicles[int(code)] = car # Substitui dados
-            print('-' * 80)
+            print('=' * 80)
             print('Car modified successfully.')
             break
         else:
@@ -341,7 +344,7 @@ def modify_motorcycle():
             print(f'You selected: {motorcycle.vehicle_data()}')
             motorcycle.modify_motorcycle() # Chamar método - modificar dados motocicleta
             registered_vehicles[int(code)] = motorcycle # Substitui dados
-            print('-' * 80)
+            print('=' * 80)
             print('Motorcycle modified successfully.')
             break
         else:
@@ -381,7 +384,7 @@ def modify_truck():
             print(f'You selected: {truck.vehicle_data()}')
             truck.modify_truck() # Chamar método - modificar dados caminhão
             registered_vehicles[int(code)] = truck # Substitui dados
-            print('-' * 80)
+            print('=' * 80)
             print('Truck modified successfully.')
             break
         else:

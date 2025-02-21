@@ -209,7 +209,7 @@ class Vehicle:
         print('=' * 80)
         while True:
             try:
-                new_code = input(f'Enter code [{self.code}]: ').strip() # Criar nova variável e mostrar valor atual
+                new_code = input(f'Enter new code [{self.code}]: ').strip() # Criar nova variável e mostrar valor atual
 
                 # Condicionar existência - código veículo
                 if new_code:
@@ -223,7 +223,7 @@ class Vehicle:
 
         while True:
             try:
-                new_brand = input(f'Enter brand [{self.brand}]: ').strip() # Criar nova variável e mostrar valor atual
+                new_brand = input(f'Enter new brand [{self.brand}]: ').strip() # Criar nova variável e mostrar valor atual
 
                 # Condicionar existência - marca veículo
                 if new_brand:
@@ -237,7 +237,7 @@ class Vehicle:
 
         while True:
             try:
-                new_model = input(f'Enter model [{self.model}]: ').strip() # Criar nova variável e mostrar valor atual
+                new_model = input(f'Enter new model [{self.model}]: ').strip() # Criar nova variável e mostrar valor atual
 
                 # Condicionar existência - modelo veículo
                 if new_model:
@@ -252,7 +252,7 @@ class Vehicle:
         while True:
             try:
                 new_year = input(
-                    f'Enter year manufacture [{self.year}]: ').strip() # Criar nova variável e mostrar valor atual
+                    f'Enter new year [{self.year}]: ').strip() # Criar nova variável e mostrar valor atual
 
                 # Condicionar existência - ano veículo
                 if new_year:
@@ -266,7 +266,7 @@ class Vehicle:
 
         while True:
             try:
-                new_color = input(f'Enter color [{self.color}]: ').strip() # Criar nova variável e mostrar valor atual
+                new_color = input(f'Enter new color [{self.color}]: ').strip() # Criar nova variável e mostrar valor atual
 
                 # Condicionar existência - cor veículo
                 if new_color:
@@ -282,7 +282,6 @@ class Vehicle:
     def vehicle_data(self):
         """Method - show vehicle data
         """
-        print('-' * 80)
         print(f'Code: {self.code}')
         print(f'Brand: {self.brand}')
         print(f'Model: {self.model}')
@@ -369,7 +368,7 @@ class Car(Vehicle):
         super().modify_vehicle() # Herdar método - modificar dados veículo
         while True:
             try:
-                new_fuel_type = input(f'Enter fuel type [{self.fuel_type}]: ').strip() # Criar nova variável e mostrar valor atual
+                new_fuel_type = input(f'Enter new fuel type [{self.fuel_type}]: ').strip() # Criar nova variável e mostrar valor atual
                 if new_fuel_type:
                     self.fuel_type = new_fuel_type # Receber novo valor - tipo de combustível carro
                 print('=' * 80)
@@ -464,7 +463,7 @@ class Motorcycle(Vehicle):
         super().modify_vehicle() # Herdar método - modificar veículo
         while True:
             try:
-                new_motorcycle_type = input(f'Enter motorcycle type [{self.motorcycle_type}]: ').strip() # Criar nova variável e mostrar valor atual
+                new_motorcycle_type = input(f'Enter new motorcycle type [{self.motorcycle_type}]: ').strip() # Criar nova variável e mostrar valor atual
                 if new_motorcycle_type:
                     self.motorcycle_type = new_motorcycle_type # Receber novo valor - tipo de motocicleta
                 print('=' * 80)
@@ -560,7 +559,7 @@ class Truck(Vehicle):
         super().modify_vehicle() # Herdar método - modificar dados caminhão
         while True:
             try:
-                new_load_capacity = input(f'Enter load capacity [{self.load_capacity}]: ').strip() # Criar nova variável e mostrar valor atual
+                new_load_capacity = input(f'Enter new load capacity [{self.load_capacity}]: ').strip() # Criar nova variável e mostrar valor atual
                 if new_load_capacity:
                     self.fuel_type = new_load_capacity # Receber novo valor - capacidade de carga caminhão
                 print('=' * 80)
