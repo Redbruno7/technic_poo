@@ -26,7 +26,9 @@ def main_menu():
                 title()
                 modify_menu() # Chamar função modificar
             elif option == 3:
-                pass
+                cls_term()
+                title()
+                del_menu() # Chamar função deletar
             elif option == 4:
                 cls_term()
                 title()
@@ -66,7 +68,7 @@ def list_registered_vehicles():
         print('No vehicles registered yet.')
         print('=' * 80)
 
-# Menu de Registro
+# Registrar
 def register_menu():
     """Function - register menu
 
@@ -213,7 +215,7 @@ def register_again():
             input('Invalid option. Press enter to try again: ')
             print('-' * 80)
 
-# Menu modiicar
+# Modificar
 def modify_menu():
     """Function - modify menu
 
@@ -383,3 +385,127 @@ def modify_again():
             print('-' * 80)
             input('Invalid option. Press enter to try again: ')
             print('-' * 80)
+
+# Deletar
+def del_menu():
+    """Function - delete menu
+
+    Returns:
+        main menu: return to main menu
+    """
+    cls_term()
+    title()
+    menu_2()
+    option = input('Choose option (1-4): ').strip()
+
+    # Validar opção
+    if option.isdigit():
+        option = int(option)
+
+        if option == 1:
+            del_car() # Chamar função - deletar carro
+        elif option == 2:
+            del_motorcycle() # Chamar função - deletar motocicleta
+        elif option == 3:
+            del_truck() # Chamar função - deletar caminhão
+        elif option == 4:
+            return main_menu() # Retornar ao menu principal
+        else:
+            print('-' * 80)
+            input('Invalid option. Press enter to try again: ')
+            cls_term()
+
+    else:
+        print('-' * 80)
+        input('Invalid option. Press enter to try again: ')
+        cls_term()
+
+
+def del_car():
+    """Function - delete car data
+    """
+    while True:
+        cls_term()
+        title()
+        print('Delete Car Register:')
+        print('=' * 80)
+
+        # Exibir todos os carros registrados
+        for vehicle in registered_vehicles.values():
+
+            # Condicionar existência - carro 
+            if isinstance(vehicle, Car):
+                vehicle.vehicle_data() # Exibir dados - carro
+
+        print('=' * 80)
+        code = input('Enter car code to delete: ').strip()
+        print('-' * 80)
+
+        # Condicionar existência - registro carro
+        if code.isdigit() and int(code) in registered_vehicles:
+            del_car = registered_vehicles.pop(int(code)) # Remover carro
+            print(f'Car (Code: {del_car.code}) deleted successfully.')
+            break
+        else:
+            print('-' * 80)
+            input('Car code not found. Press enter to try again: ')
+
+
+def del_motorcycle():
+    """Function - delete motorcycle data
+    """
+    while True:
+        cls_term()
+        title()
+        print('Delete Motorcycle Register:')
+        print('=' * 80)
+
+        # Exibir todas as motocicletas registradas
+        for vehicle in registered_vehicles.values():
+
+            # Condicionar existência - motocicleta 
+            if isinstance(vehicle, Motorcycle):
+                vehicle.vehicle_data() # Exibir dados - motocicleta
+
+        print('=' * 80)
+        code = input('Enter motorcycle code to delete: ').strip()
+        print('-' * 80)
+
+        # Condicionar existência - registro motocicleta
+        if code.isdigit() and int(code) in registered_vehicles:
+            del_motorcycle = registered_vehicles.pop(int(code)) # Remover motocicleta
+            print(f'Motorcycle (Code: {del_motorcycle.code}) deleted successfully.')
+            break
+        else:
+            print('-' * 80)
+            input('Motorcycle code not found. Press enter to try again: ')
+
+
+def del_truck():
+    """Function - delete truck data
+    """
+    while True:
+        cls_term()
+        title()
+        print('Delete Truck Register:')
+        print('=' * 80)
+
+        # Exibir todos os caminhões registrados
+        for vehicle in registered_vehicles.values():
+
+            # Condicionar existência - caminhão 
+            if isinstance(vehicle, Truck):
+                vehicle.vehicle_data() # Exibir dados - caminhão
+
+        print('=' * 80)
+        code = input('Enter truck code to delete: ').strip()
+        print('-' * 80)
+
+        # Condicionar existência - registro caminhão
+        if code.isdigit() and int(code) in registered_vehicles:
+            del_truck = registered_vehicles.pop(int(code)) # Remover caminhão
+            print(f'Truck (Code: {del_truck.code}) deleted successfully.')
+            break
+        else:
+            print('-' * 80)
+            input('Truck code not found. Press enter to try again: ')
