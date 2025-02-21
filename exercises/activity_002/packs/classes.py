@@ -1,4 +1,4 @@
-registered_codes = set()
+registered_vehicles = {}
 
 class Vehicle:
     def __init__(self, code=0, brand='', model='', year=0, color=''):
@@ -25,10 +25,10 @@ class Vehicle:
     def code(self, value):
         if not isinstance(value, int) or value <= 0:
             raise ValueError('Register code must is a positive number.')
-        if value in registered_codes:
+        if value in registered_vehicles:
             raise ValueError('This code is already in use.')
         self._code = value
-        registered_codes.add(value)
+        registered_vehicles[value] = self
 
     @property
     def brand(self):
@@ -121,6 +121,69 @@ class Vehicle:
                 print(e)
                 print('-' * 80)
 
+    def modify_vehicle(self):
+        print('=' * 80)
+        while True:
+            try:
+                new_code = input(f'Enter code [{self.code}]: ').strip()
+                if new_code:
+                    self.code = int(new_code)
+                print('-' * 80)
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+
+        while True:
+            try:
+                new_brand = input(f'Enter brand [{self.brand}]: ').strip()
+                if new_brand:
+                    self.brand = new_brand
+                print('-' * 80)
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+
+        while True:
+            try:
+                new_model = input(f'Enter model [{self.model}]: ').strip()
+                if new_model:
+                    self.model = new_model
+                print('-' * 80)
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+    
+        while True:
+            try:
+                new_year = input(
+                    f'Enter year manufacture [{self.year}]: ').strip()
+                if new_year:
+                    self.year = int(new_year)
+                    print('-' * 80)
+                    break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+
+        while True:
+            try:
+                new_color = input(f'Enter color [{self.color}]: ').strip()
+                if new_color:
+                    self.color = new_color
+                    print('-' * 80)
+                    break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+
     def vehicle_data(self):
         print('-' * 80)
         print(f'Code: {self.code}')
@@ -159,6 +222,21 @@ class Car(Vehicle):
         while True:
             try:
                 self.fuel_type = input('Enter fuel type: ')
+                print('=' * 80)
+                print()
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+
+    def modify_car(self):
+        super().modify_vehicle()
+        while True:
+            try:
+                new_fuel_type = input(f'Enter fuel type [{self.fuel_type}]: ').strip()
+                if new_fuel_type:
+                    self.fuel_type = new_fuel_type
                 print('=' * 80)
                 print()
                 break
@@ -207,6 +285,21 @@ class Motorcycle(Vehicle):
                 print(e)
                 print('-' * 80)
 
+    def modify_motorcycle(self):
+        super().modify_vehicle()
+        while True:
+            try:
+                new_motorcycle_type = input(f'Enter motorcycle type [{self.motorcycle_type}]: ').strip()
+                if new_motorcycle_type:
+                    self.motorcycle_type = new_motorcycle_type
+                print('=' * 80)
+                print()
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+
     def motorcycle_data(self):
         super().vehicle_data()
         print(f'Motorcycle type: {self._motorcycle_type}')
@@ -239,6 +332,21 @@ class Truck(Vehicle):
         while True:
             try:
                 self._load_capacity = float(input('Enter load capacity: '))
+                print('=' * 80)
+                print()
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+
+    def modify_truck(self):
+        super().modify_vehicle()
+        while True:
+            try:
+                new_load_capacity = input(f'Enter load capacity [{self.load_capacity}]: ').strip()
+                if new_load_capacity:
+                    self.fuel_type = new_load_capacity
                 print('=' * 80)
                 print()
                 break
