@@ -1,8 +1,10 @@
 from packs.menu import cls_term, title, menu_1, menu_2
 from packs.classes import Car, Motorcycle, Truck, registered_vehicles
 
-
+# Menu Principal
 def main_menu():
+    """Function - main menu to call others menus
+    """
     while True:
         cls_term()
         title()
@@ -10,23 +12,25 @@ def main_menu():
 
         option = input('Choose option (1-5): ')
 
+        # Validar opção
         if option.isdigit():
             option = int(option)
 
             if option == 1:
+                # Invocar funções
                 cls_term()
                 title()
-                register_menu()
+                register_menu() # Chamar função registro
             elif option == 2:
                 cls_term()
                 title()
-                modify_menu()
+                modify_menu() # Chamar função modificar
             elif option == 3:
                 pass
             elif option == 4:
                 cls_term()
                 title()
-                list_registered_vehicles()
+                list_registered_vehicles() # Chamar função de exibição
                 input('Press enter to continue: ')
             elif option == 5:
                 print('=' * 80)
@@ -35,7 +39,7 @@ def main_menu():
                 print('Shutting down system.')
                 print('=' * 80)
                 print()
-                break
+                break # Encerrar o sistema
             else:
                 print('-' * 80)
                 input('Invalid option. Press enter to try again: ')
@@ -46,8 +50,11 @@ def main_menu():
             input('Invalid option. Press enter to try again: ')
             cls_term()
 
-
+# Exibir registros de veículos
 def list_registered_vehicles():
+    """Function - show registers vehicles
+    """
+    # Condicionar de existência
     if registered_vehicles:
         print('=' * 80)
         print('Registered Vehicles:')
@@ -59,8 +66,13 @@ def list_registered_vehicles():
         print('No vehicles registered yet.')
         print('=' * 80)
 
-
+# Menu de Registro
 def register_menu():
+    """Function - register menu
+
+    Returns:
+        main menu: return to main menu
+    """
     while True:
         menu_2()
 
@@ -73,15 +85,15 @@ def register_menu():
                 while True:
                     cls_term()
                     title()
-                    register_car()
+                    register_car() # Chamar função - registrar carro
                     print()
-                    register_again()
+                    register_again() # Iterar para registrar novamente
 
             elif option == 2:
                 while True:
                     cls_term()
                     title()
-                    register_motorcycle()
+                    register_motorcycle() # Chamar função - registrar motocicleta
                     print()
                     register_again()
 
@@ -89,12 +101,12 @@ def register_menu():
                 while True:
                     cls_term()
                     title()
-                    register_truck()
+                    register_truck() # Chamar função - registrar caminhão
                     print()
                     register_again()
 
             elif option == 4:
-                return
+                return # Retornar ao menu principal
 
             else:
                 print('-' * 80)
@@ -108,12 +120,17 @@ def register_menu():
 
 
 def register_car():
-    car = Car()
+    """Register car function
+
+    Returns:
+        method: return method car get data
+    """
+    car = Car() # Instanciar objeto - carro
 
     print('=' * 80)
     while True:
         try:
-            car.get_data()
+            car.get_data() # Chamar método - receber dados carro
             break
         except ValueError as e:
             print('-' * 80)
@@ -122,16 +139,21 @@ def register_car():
 
     print('=' * 80)
     print('Car registered successfully.')
-    return car.car_data()
+    return car.car_data() # Retornar método - dados carro
 
 
 def register_motorcycle():
-    motorcycle = Motorcycle()
+    """Function - register motorcycle
+
+    Returns:
+        method: return method motorcycle get data
+    """
+    motorcycle = Motorcycle() # Instanciar objeto - motocicleta
 
     print('=' * 80)
     while True:
         try:
-            motorcycle.get_data()
+            motorcycle.get_data() # Chamar método - receber dados motocicleta
             break
         except ValueError as e:
             print('-' * 80)
@@ -140,16 +162,21 @@ def register_motorcycle():
 
     print('=' * 80)
     print('Motorcycle registered successfully.')
-    return motorcycle.motorcycle_data()
+    return motorcycle.motorcycle_data() # Retornar método - dados motocicleta
 
 
 def register_truck():
-    truck = Truck()
+    """Function - register truck
+
+    Returns:
+        method: return method truck get data
+    """
+    truck = Truck() # Instanciar objeto - caminhão
 
     print('=' * 80)
     while True:
         try:
-            truck.get_data()
+            truck.get_data() # Chamar método - receber dados caminhão
             break
         except ValueError as e:
             print('-' * 80)
@@ -158,51 +185,64 @@ def register_truck():
 
     print('=' * 80)
     print('Truck registered successfully.')
-    return truck.truck_data()
+    return truck.truck_data() # Retornar método - dados caminhão
 
 
 def register_again():
+    """Function - continue registering
+
+    Returns:
+        main menu: return to main menu
+        register menu: return to register menu
+    """
     print('=' * 80)
     while True:
         register_again = input(
             'Continue register (y/n): '
         ).strip().lower()
 
+        # Validar entrada
         if register_again == 'n':
-            return main_menu()
+            return main_menu() # Retornar para o Menu Principal
         elif register_again == 'y':
             cls_term()
             title()
-            return register_menu()
+            return register_menu() # Retornar para o Menu Registro
         else:
             print('-' * 80)
             input('Invalid option. Press enter to try again: ')
             print('-' * 80)
 
-
+# Menu modiicar
 def modify_menu():
+    """Function - modify menu
+
+    Returns:
+        main menu: return to main menu
+    """
     cls_term()
     title()
     menu_2()
     option = input('Choose option (1-4): ').strip()
 
+    # Validar opção
     if option.isdigit():
         option = int(option)
 
         if option == 1:
-            modify_car()
+            modify_car() # Chamar função - modificar carro
             print()
-            modify_again()
+            modify_again() # Chamar função - modificar novamente
         elif option == 2:
-            modify_motorcycle()
+            modify_motorcycle() # Chamar função - modificar motocicleta
             print()
             modify_again()
         elif option == 3:
-            modify_truck()
+            modify_truck() # Chamar função - modificar caminhão
             print()
             modify_again()
         elif option == 4:
-            return main_menu()
+            return main_menu() # Retornar ao menu principal
         else:
             print('-' * 80)
             input('Invalid option. Press enter to try again: ')
@@ -215,27 +255,32 @@ def modify_menu():
 
 
 def modify_car():
+    """Function - modify car data
+    """
     while True:
         cls_term()
         title()
         print('Modify Car Information:')
         print('=' * 80)
 
-        # Exibe todos os carros registrados
+        # Exibir todos os carros registrados
         for vehicle in registered_vehicles.values():
+
+            # Condicionar existência - carro 
             if isinstance(vehicle, Car):
-                vehicle.vehicle_data()
+                vehicle.vehicle_data() # Exibir dados - carro
 
         print('=' * 80)
         code = input('Enter car code to modify: ').strip()
         print('-' * 80)
 
+        # Condicionar existência - registro carro
         if code.isdigit() and int(code) in registered_vehicles:
-            car = registered_vehicles[int(code)]
+            car = registered_vehicles[int(code)] # Criar variável - receber registro existente
 
             print(f'You selected: {car.vehicle_data()}')
-            car.modify_car() # Chama o método de modificação de dados
-            registered_vehicles[int(code)] = car # Substitui os dados
+            car.modify_car() # Chamar método - modificar dados carro
+            registered_vehicles[int(code)] = car # Substitui dados
             print('-' * 80)
             print('Car modified successfully.')
             break
@@ -245,27 +290,32 @@ def modify_car():
 
 
 def modify_motorcycle():
+    """Function - modify motorcycle data
+    """
     while True:
         cls_term()
         title()
         print('Modify Motorcycle Information:')
         print('=' * 80)
 
-        # Exibe todos as Motocicletas registradas
+        # Exibe todos as motocicletas registradas
         for vehicle in registered_vehicles.values():
+
+            # Condicionar existência - motocicleta
             if isinstance(vehicle, Motorcycle):
-                vehicle.vehicle_data()
+                vehicle.vehicle_data() # Exibir dados - motocicleta
 
         print('=' * 80)
         code = input('Enter mortorcycle code to modify: ').strip()
         print('-' * 80)
 
+        # Condicionar existência - registro motocicleta
         if code.isdigit() and int(code) in registered_vehicles:
-            motorcycle = registered_vehicles[int(code)]
+            motorcycle = registered_vehicles[int(code)] # Criar variável - receber registro existente
 
             print(f'You selected: {motorcycle.vehicle_data()}')
-            motorcycle.modify_motorcycle() # Chama o método de modificação de dados
-            registered_vehicles[int(code)] = motorcycle # Substitui os dados
+            motorcycle.modify_motorcycle() # Chamar método - modificar dados motocicleta
+            registered_vehicles[int(code)] = motorcycle # Substitui dados
             print('-' * 80)
             print('Motorcycle modified successfully.')
             break
@@ -275,27 +325,32 @@ def modify_motorcycle():
 
 
 def modify_truck():
+    """Function - modify truck data
+    """
     while True:
         cls_term()
         title()
         print('Modify Truck Information:')
         print('=' * 80)
 
-        # Exibe todos os carros registrados
+        # Exibe todos os caminhões registrados
         for vehicle in registered_vehicles.values():
+
+            # Condicionar existência - caminhão
             if isinstance(vehicle, Truck):
-                vehicle.vehicle_data()
+                vehicle.vehicle_data() # Exibir dados - caminhão
 
         print('=' * 80)
         code = input('Enter car code to modify: ').strip()
         print('-' * 80)
 
+        # Condicionar existência - registro caminhão
         if code.isdigit() and int(code) in registered_vehicles:
-            truck = registered_vehicles[int(code)]
+            truck = registered_vehicles[int(code)] # Criar variável - receber registro existente
 
             print(f'You selected: {truck.vehicle_data()}')
-            truck.modify_truck() # Chama o método de modificação de dados
-            registered_vehicles[int(code)] = truck # Substitui os dados
+            truck.modify_truck() # Chamar método - modificar dados caminhão
+            registered_vehicles[int(code)] = truck # Substitui dados
             print('-' * 80)
             print('Truck modified successfully.')
             break
@@ -305,18 +360,25 @@ def modify_truck():
 
 
 def modify_again():
+    """Function - continue modifying
+
+    Returns:
+        main menu: return to main menu
+        modify menu: return to modify menu
+    """
     print('=' * 80)
     while True:
         modify_again = input(
             'Continue modify (y/n): '
         ).strip().lower()
 
+        # Validar entrada
         if modify_again == 'n':
-            return main_menu()
+            return main_menu() # Retornar ao menu principal
         elif modify_again == 'y':
             cls_term()
             title()
-            return modify_menu()
+            return modify_menu() # Retornar ao menu modificar
         else:
             print('-' * 80)
             input('Invalid option. Press enter to try again: ')
