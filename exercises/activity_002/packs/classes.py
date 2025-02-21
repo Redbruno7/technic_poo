@@ -1,5 +1,6 @@
 # Criar dicionário para armazenamento
-registered_vehicles = {}
+registered_vehicles = {}       
+
 
 # Definir superclasse
 class Vehicle:

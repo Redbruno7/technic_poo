@@ -33,6 +33,7 @@ def main_menu():
                 cls_term()
                 title()
                 list_registered_vehicles() # Chamar função de exibição
+                print('=' * 80)
                 input('Press enter to continue: ')
             elif option == 5:
                 print('=' * 80)
@@ -59,14 +60,25 @@ def list_registered_vehicles():
     # Condicionar de existência
     if registered_vehicles:
         print('=' * 80)
-        print('Registered Vehicles:')
-        for vehiccle in registered_vehicles.values():
-            vehiccle.vehicle_data()
+        print('Registered Vehicles:'. center(80))
         print('=' * 80)
-    else:
-        print('=' * 80)
-        print('No vehicles registered yet.')
-        print('=' * 80)
+        print()
+
+    for vehicle in registered_vehicles.values():
+        if isinstance(vehicle, Car):
+            print('=' * 80)
+            print('Registered Cars:')
+            vehicle.car_data()
+        elif isinstance(vehicle, Motorcycle):
+            print('=' * 80)
+            print('Registered Motorcycles:')
+            vehicle.motorcycle_data()
+        elif isinstance(vehicle, Truck):
+            print('=' * 80)
+            print('Registered Trucks:')
+            vehicle.truck_data()
+        else:
+            vehicle.vehicle_data()
 
 # Registrar
 def register_menu():
@@ -262,19 +274,25 @@ def modify_car():
     while True:
         cls_term()
         title()
+        print('=' * 80)
         print('Modify Car Information:')
         print('=' * 80)
+        print()
 
         # Exibir todos os carros registrados
         for vehicle in registered_vehicles.values():
 
             # Condicionar existência - carro 
             if isinstance(vehicle, Car):
+                print('=' * 80)
+                print('Registered Cars:')
                 vehicle.vehicle_data() # Exibir dados - carro
+                print('=' * 80)
+                print()
 
         print('=' * 80)
         code = input('Enter car code to modify: ').strip()
-        print('-' * 80)
+        print('=' * 80)
 
         # Condicionar existência - registro carro
         if code.isdigit() and int(code) in registered_vehicles:
@@ -299,13 +317,18 @@ def modify_motorcycle():
         title()
         print('Modify Motorcycle Information:')
         print('=' * 80)
+        print()
 
         # Exibe todos as motocicletas registradas
         for vehicle in registered_vehicles.values():
 
             # Condicionar existência - motocicleta
             if isinstance(vehicle, Motorcycle):
+                print('=' * 80)
+                print('Registered Motorcycles:')
                 vehicle.vehicle_data() # Exibir dados - motocicleta
+                print('=' * 80)
+                print()
 
         print('=' * 80)
         code = input('Enter mortorcycle code to modify: ').strip()
@@ -334,13 +357,18 @@ def modify_truck():
         title()
         print('Modify Truck Information:')
         print('=' * 80)
+        print()
 
         # Exibe todos os caminhões registrados
         for vehicle in registered_vehicles.values():
 
             # Condicionar existência - caminhão
             if isinstance(vehicle, Truck):
+                print('=' * 80)
+                print('Registered Trucks:')
                 vehicle.vehicle_data() # Exibir dados - caminhão
+                print('=' * 80)
+                print()
 
         print('=' * 80)
         code = input('Enter car code to modify: ').strip()
