@@ -234,7 +234,10 @@ def modify_car():
             car = registered_vehicles[int(code)]
 
             print(f'You selected: {car.vehicle_data()}')
-            car.get_data() # Chama o método de modificação de dados
+            car.modify_car() # Chama o método de modificação de dados
+            registered_vehicles[int(code)] = car # Substitui os dados
+            print('-' * 80)
+            print('Car modified successfully.')
             break
         else:
             print('-' * 80)
@@ -261,7 +264,10 @@ def modify_motorcycle():
             motorcycle = registered_vehicles[int(code)]
 
             print(f'You selected: {motorcycle.vehicle_data()}')
-            motorcycle.get_data() # Chama o método de modificação de dados
+            motorcycle.modify_motorcycle() # Chama o método de modificação de dados
+            registered_vehicles[int(code)] = motorcycle # Substitui os dados
+            print('-' * 80)
+            print('Motorcycle modified successfully.')
             break
         else:
             print('-' * 80)
@@ -288,7 +294,10 @@ def modify_truck():
             truck = registered_vehicles[int(code)]
 
             print(f'You selected: {truck.vehicle_data()}')
-            truck.get_data() # Chama o método de modificação de dados
+            truck.modify_truck() # Chama o método de modificação de dados
+            registered_vehicles[int(code)] = truck # Substitui os dados
+            print('-' * 80)
+            print('Truck modified successfully.')
             break
         else:
             print('-' * 80)
