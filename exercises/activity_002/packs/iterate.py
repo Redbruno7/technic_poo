@@ -295,11 +295,12 @@ def modify_car():
 
         print('=' * 80)
         code = input('Enter car code to modify: ').strip()
+        print('=' * 80)
 
         # Condicionar existência - registro carro
         if code.isdigit() and int(code) in registered_vehicles:
             car = registered_vehicles[int(code)] # Criar variável - receber registro existente
-            print('=' * 80)
+
             print(f'You selected: {car.vehicle_data()}')
             car.modify_car() # Chamar método - modificar dados carro
             registered_vehicles[int(code)] = car # Substitui dados

@@ -207,7 +207,76 @@ class Vehicle:
         """Method - modify vehicle data
         """
         print('=' * 80)
-        self.get_data()
+        while True:
+            try:
+                new_code = input(f'Enter new code [{self.code}]: ').strip() # Criar nova variável e mostrar valor atual
+
+                # Condicionar existência - código veículo
+                if new_code:
+                    self.code = int(new_code) # Receber novo valor - código veículo
+                print('-' * 80)
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+
+        while True:
+            try:
+                new_brand = input(f'Enter new brand [{self.brand}]: ').strip() # Criar nova variável e mostrar valor atual
+
+                # Condicionar existência - marca veículo
+                if new_brand:
+                    self.brand = new_brand # Receber novo valor - marca veículo
+                print('-' * 80)
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+
+        while True:
+            try:
+                new_model = input(f'Enter new model [{self.model}]: ').strip() # Criar nova variável e mostrar valor atual
+
+                # Condicionar existência - modelo veículo
+                if new_model:
+                    self.model = new_model # Receber novo valor - modelo veículo
+                print('-' * 80)
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+    
+        while True:
+            try:
+                new_year = input(
+                    f'Enter new year [{self.year}]: ').strip() # Criar nova variável e mostrar valor atual
+
+                # Condicionar existência - ano veículo
+                if new_year:
+                    self.year = int(new_year) # Receber novo valor - ano veículo
+                    print('-' * 80)
+                    break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
+
+        while True:
+            try:
+                new_color = input(f'Enter new color [{self.color}]: ').strip() # Criar nova variável e mostrar valor atual
+
+                # Condicionar existência - cor veículo
+                if new_color:
+                    self.color = new_color # Receber novo valor - cor veículo
+                    print('-' * 80)
+                    break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
 
     # Método - exibir dados veículo
     def vehicle_data(self):
@@ -296,7 +365,19 @@ class Car(Vehicle):
     def modify_car(self):
         """Method - modify car data
         """
-        self.get_data()
+        super().modify_vehicle() # Herdar método - modificar dados veículo
+        while True:
+            try:
+                new_fuel_type = input(f'Enter new fuel type [{self.fuel_type}]: ').strip() # Criar nova variável e mostrar valor atual
+                if new_fuel_type:
+                    self.fuel_type = new_fuel_type # Receber novo valor - tipo de combustível carro
+                print('=' * 80)
+                print()
+                break
+            except ValueError as e:
+                print('-' * 80)
+                print(e)
+                print('-' * 80)
 
     # Método - exibir dados carro
     def car_data(self):
